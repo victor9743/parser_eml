@@ -74,7 +74,6 @@ end
 gem 'redis'
 gem 'sidekiq'
 gem 'mail'
-gem 'rspec-rails', group: [:development, :test]
 gem 'factory_bot_rails', group: [:development, :test]
 gem 'shoulda-matchers', group: [:test]
 gem 'dotenv-rails', groups: [:development, :test]

@@ -1,0 +1,23 @@
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-header">
+      <h4>Enviar arquivo .eml</h4>
+    </div>
+
+    <div class="card-body">
+      <%= form_with model: @incoming_email, local: true, html: { multipart: true } do |form| %>
+
+        <div class="mb-3">
+          <%= form.label :file, "Selecione o arquivo .eml", class: "form-label" %>
+          <%= form.file_field :file, accept: ".eml", class: "form-control" %>
+        </div>
+
+        <div>
+          <%= form.submit "Enviar e processar", class: "btn btn-primary" %>
+          <%= link_to "Voltar", incoming_emails_path, class: "btn btn-secondary ms-2" %>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>
