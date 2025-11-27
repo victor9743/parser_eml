@@ -7,9 +7,9 @@ class IncomingEmailsController < ApplicationController
     @incoming_email = IncomingEmail.new(filename: params[:incoming_email][:file].original_filename, sender: nil)
     @incoming_email.file.attach(params[:incoming_email][:file])
 
-    if @incoming_email.save
+    if @incoming_email.save!
       ProcessIncomingEmailWorker.perform_async(@incoming_email.id)
-      redirect_to incoming_emails_path, notice: 'Arquivo enviado e processamento em background iniciado.'
+      redirect_to incoming_emails_path, notice: 'File sent and background processing started'
     else
       render :new
     end

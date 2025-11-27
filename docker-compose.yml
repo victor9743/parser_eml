@@ -1,10 +1,8 @@
-version: "3.8"
-
 services:
   web:
     build: .
     environment:
-      SECRET_KEY_BASE: "9bc4f9e3928175f89f950dedf5f37b1e9c021a553881e36f10fcb0afd0e08436e22cf50843e1ac0986f102f88c727160c8c96a7fe464326e75b5f0413321922f"
+      SECRET_KEY_BASE: "9bc4f9e3928175f89f950dedf5f37b1e9c021a553881e36f10fcb0afdf"
       RAILS_ENV: development
       DATABASE_URL: postgresql://postgres:password@db:5432/postgres
       REDIS_URL: redis://redis:6379/0
@@ -13,6 +11,21 @@ services:
       - "3000:3000"
     volumes:
       - .:/app
+      - rails_storage:/rails/storage
+    depends_on:
+      - db
+      - redis
+
+  sidekiq:
+    build: .
+    command: bash -lc "bundle exec sidekiq"
+    volumes:
+      - .:/app
+      - rails_storage:/rails/storage
+    environment:
+      RAILS_ENV: development
+      REDIS_URL: redis://redis:6379/0
+      DATABASE_URL: postgresql://postgres:password@db:5432/postgres
     depends_on:
       - db
       - redis
@@ -30,18 +43,6 @@ services:
     ports:
       - "6379:6379"
 
-  sidekiq:
-    build: .
-    command: bundle exec sidekiq
-    volumes:
-      - .:/app
-    environment:
-      RAILS_ENV: development
-      REDIS_URL: redis://redis:6379/0
-      DATABASE_URL: postgresql://postgres:password@db:5432/postgres
-    depends_on:
-      - db
-      - redis
-
 volumes:
   db_data:
+  rails_storage:
