@@ -80,3 +80,4 @@ gem 'factory_bot_rails', group: [:development, :test]
 gem 'shoulda-matchers', group: [:test]
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'sidekiq-cron'
+gem 'kaminari'

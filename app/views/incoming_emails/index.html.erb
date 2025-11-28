@@ -1,10 +1,67 @@
-<p><%= notice %></p>
+<div class="row mx-auto d-flex justify-content-center">
 
-<table>
+    <div class="col-md-2">
+        <div class="card bg-primary text-light">
+            <div class="card-header">
+                Total
+            </div>
+            <div class="card-body text-center">
+                <%= count_incoming_emails("all")%>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-2">
+        <div class="card bg-dark text-light">
+            <div class="card-header">
+                Pending
+            </div>
+            <div class="card-body text-center">
+                <%= count_incoming_emails("pending") %>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-2">
+        <div class="card bg-warning text-light">
+            <div class="card-header">
+                Processing
+            </div>
+            <div class="card-body text-center">
+                <%= count_incoming_emails("processing")%>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-2">
+        <div class="card bg-danger text-light">
+            <div class="card-header">
+                Failed
+            </div>
+            <div class="card-body text-center">
+                <%= count_incoming_emails("failed") %>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-2">
+        <div class="card bg-success text-light">
+            <div class="card-header">
+                Success
+            </div>
+            <div class="card-body text-center">
+                <%= count_incoming_emails("success") %>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<table class="table table-bordered mt-5">
     <thead>
         <th>#</th>
         <th>filename</th>
-        <th>status<th>
+        <th>status</th>
         <th>Opções</th>
     </thead>
     <tbody>
@@ -12,11 +69,13 @@
             <tr>
                 <td><%= incoming_email.id %></td>
                 <td><%= incoming_email.filename %></td>
-                <td><%= incoming_email.status %></td>
+                <td>
+                    <span class="badge bg-<%= color_badge(incoming_email.status) %>"><%= incoming_email.status %></span>
+                </td>
                 <td><%= link_to "details", incoming_email_path(incoming_email.id)%></td>
             </tr>
         <% end %>
     </tbody>
 </table>
-
-<%= link_to "New", new_incoming_email_path %>
+<%= paginate @incoming_emails %>
+<%= link_to "New", new_incoming_email_path, class: "btn btn-sm btn-success" %>

@@ -1,7 +1,8 @@
 class IncomingEmailsController < ApplicationController
+  rescue_from ActionController::ParameterMissing, with: :missing_file
 
   def index
-    @incoming_emails = IncomingEmail.order(created_at: :desc)
+    @incoming_emails = IncomingEmail.order(created_at: :desc).page(params[:page]).per(10)
   end
 
 
@@ -10,8 +11,8 @@ class IncomingEmailsController < ApplicationController
   end
 
   def create
-    @incoming_email = IncomingEmail.new(filename: params[:incoming_email][:file].original_filename, sender: nil)
-    @incoming_email.file.attach(params[:incoming_email][:file])
+    @incoming_email = IncomingEmail.new(incoming_email_params.merge(sender: nil))
+    # @incoming_email.file.attach(incoming_email_params)
 
     if @incoming_email.save!
       ProcessIncomingEmailWorker.perform_async(@incoming_email.id)
@@ -25,9 +26,13 @@ class IncomingEmailsController < ApplicationController
     @incoming_email = IncomingEmail.find(params[:id])
   end
 
-  def reprocess
-    @incoming_email = IncomingEmail.find(params[:id])
-    ProcessIncomingEmailWorker.perform_async(@incoming_email.id)
-    redirect_to @incoming_email, notice: 'Reprocessamento enfileirado.'
+  private
+  def incoming_email_params
+    params.require(:incoming_email).permit(:file)
+  end
+
+  def missing_file
+    flash[:alert] = "File is required."
+    redirect_back fallback_location: incoming_emails_path
   end
 end

@@ -10,7 +10,14 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="container">
+    <% flash.each do |key, message| %>
+      <div class="alert alert-<%= bootstrap_class_for(key) %> shadow mx-5 col-12" style="position: fixed; top: 20px; right: 0; z-index: 9999; width: auto; max-width: 90%;">
+        <%= message %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% end %>
     <%= yield %>
+    <%= javascript_importmap_tags %>
   </body>
 </html>
