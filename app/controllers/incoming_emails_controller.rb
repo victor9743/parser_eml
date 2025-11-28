@@ -12,7 +12,6 @@ class IncomingEmailsController < ApplicationController
 
   def create
     @incoming_email = IncomingEmail.new(incoming_email_params.merge(sender: nil))
-    # @incoming_email.file.attach(incoming_email_params)
 
     if @incoming_email.save!
       ProcessIncomingEmailWorker.perform_async(@incoming_email.id)
