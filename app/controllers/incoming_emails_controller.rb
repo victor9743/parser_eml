@@ -1,4 +1,10 @@
 class IncomingEmailsController < ApplicationController
+
+  def index
+    @incoming_emails = IncomingEmail.order(created_at: :desc)
+  end
+
+
   def new
     @incoming_email = IncomingEmail.new
   end
@@ -13,10 +19,6 @@ class IncomingEmailsController < ApplicationController
     else
       render :new
     end
-  end
-
-  def index
-    @incoming_emails = IncomingEmail.order(created_at: :desc)
   end
 
   def show

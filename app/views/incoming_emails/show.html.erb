@@ -1,0 +1,20 @@
+<h2>incoming_email details </h2>
+
+<%= @incoming_email.filename %>
+<br />
+<%= @incoming_email.status %>
+<br />
+<%= @incoming_email.sender %>
+
+
+<% @incoming_email.email_processings.each do |email_processing| %>
+    <div>
+        <%= email_processing.success %>
+    </div>
+    <div>
+        <%= email_processing.error_message %>
+    </div>
+    <div>
+        <%= email_processing.extracted_data %>
+    </div>
+<% end %>

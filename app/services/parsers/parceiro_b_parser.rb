@@ -4,10 +4,20 @@ module Parsers
     def call
       body = @mail.body.decoded
       # logic of regex/templating to extract: name, email, phone, product_code, subject
-      name = body[/Nome:\s*(.+)/,1]&.strip
-      email = body[/E-mail:\s*(\S+)/,1]&.strip
-      phone = body[/Telefone:\s*(.+)/,1]&.strip
-      product_code = body[/Produto:\s*(\w+)/,1]&.strip
+      name  = body[/Nome[:\s-]+(.+)/i, 1]&.strip
+      email = body[/E[-\s]?mail[:\s-]+(\S+)/i, 1]&.strip
+      phone = body[/Telefone[:\s-]+(.+)/i, 1]&.strip
+
+      product_code =
+        body[
+          /
+            (?:produto(?:\s+de\s+c[óo]digo)?|c[óo]digo\s+do\s+produto)
+            [\s:>-]*
+            ([A-Z0-9-]+)
+          /ix,
+          1
+        ]&.strip
+
       subject = @mail.subject
 
       if email.blank? && phone.blank?

@@ -2,7 +2,7 @@ module Parsers
   class Registry
     @mapping = {
       'loja@fornecedora.com' => Parsers::FornecedorAParser,
-      'contato@parceiro.com' => Parsers::ParceiroBParser
+      'contato@parceirob.com' => Parsers::ParceiroBParser
     }.freeze
 
     def self.for_sender(sender_email)

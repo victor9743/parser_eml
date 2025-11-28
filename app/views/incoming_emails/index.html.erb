@@ -1,1 +1,21 @@
 <p><%= notice %></p>
+
+<table>
+    <thead>
+        <th>#</th>
+        <th>filename</th>
+        <th>status<th>
+        <th>Opções</th>
+    </thead>
+    <tbody>
+        <% @incoming_emails.each do |incoming_email| %>
+            <tr>
+                <td><%= incoming_email.id %></td>
+                <td><%= incoming_email.status %></td>
+                <td><%= link_to "details", incoming_email_path(incoming_email.id)%></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<%= link_to "New", new_incoming_email_path %>
