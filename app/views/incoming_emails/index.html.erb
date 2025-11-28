@@ -11,6 +11,7 @@
         <% @incoming_emails.each do |incoming_email| %>
             <tr>
                 <td><%= incoming_email.id %></td>
+                <td><%= incoming_email.filename %></td>
                 <td><%= incoming_email.status %></td>
                 <td><%= link_to "details", incoming_email_path(incoming_email.id)%></td>
             </tr>
