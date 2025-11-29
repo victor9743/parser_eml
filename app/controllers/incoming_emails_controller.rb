@@ -1,5 +1,6 @@
 class IncomingEmailsController < ApplicationController
   rescue_from ActionController::ParameterMissing, with: :missing_file
+  skip_before_action :verify_authenticity_token, only: [:create], if: -> { Rails.env.test? }
 
   def index
     @incoming_emails = IncomingEmail.order(created_at: :desc).page(params[:page]).per(10)
@@ -13,7 +14,7 @@ class IncomingEmailsController < ApplicationController
   def create
     @incoming_email = IncomingEmail.new(incoming_email_params)
 
-    if @incoming_email.save!
+    if @incoming_email.save
       ProcessIncomingEmailWorker.perform_async(@incoming_email.id)
       redirect_to incoming_emails_path, notice: 'File sent and background processing started, please wait'
     else

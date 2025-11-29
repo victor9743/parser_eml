@@ -280,6 +280,10 @@ GEM
     reline (0.6.3)
       io-console (~> 0.5)
     rexml (3.4.4)
+    rspec (3.13.2)
+      rspec-core (~> 3.13.0)
+      rspec-expectations (~> 3.13.0)
+      rspec-mocks (~> 3.13.0)
     rspec-core (3.13.6)
       rspec-support (~> 3.13.0)
     rspec-expectations (3.13.5)
@@ -386,6 +390,7 @@ DEPENDENCIES
   puma (>= 5.0)
   rails (~> 7.1.6)
   redis
+  rspec
   rspec-rails
   selenium-webdriver
   shoulda-matchers

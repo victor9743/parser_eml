@@ -1,5 +1,13 @@
 # app/services/email_processor.rb
 class EmailProcessor
+  def self.for(mail)
+    sender = mail.from&.first&.downcase
+    parser_class = Parsers::Registry.for_sender(sender)
+    raise NoParserFound, "No parser for sender #{sender}" unless parser_class
+
+    parser_class.new(mail)
+  end
+
   def initialize(incoming_email)
     @incoming_email = incoming_email
     @raw = load_raw_email
@@ -38,3 +46,5 @@ class EmailProcessor
     StringIO.new(@incoming_email.file.download)
   end
 end
+
+class NoParserFound < StandardError; end
