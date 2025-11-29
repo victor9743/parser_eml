@@ -62,7 +62,7 @@
         <th>#</th>
         <th>filename</th>
         <th>status</th>
-        <th>Opções</th>
+        <th>Options</th>
     </thead>
     <tbody>
         <% @incoming_emails.each do |incoming_email| %>
@@ -78,4 +78,6 @@
     </tbody>
 </table>
 <%= paginate @incoming_emails %>
-<%= link_to "New", new_incoming_email_path, class: "btn btn-sm btn-success" %>
+<div class="d-flex justify-content-end">
+    <%= link_to "New", new_incoming_email_path, class: "btn btn-sm btn-success" %>
+</div>
