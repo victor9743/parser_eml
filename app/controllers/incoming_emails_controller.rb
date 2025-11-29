@@ -11,11 +11,11 @@ class IncomingEmailsController < ApplicationController
   end
 
   def create
-    @incoming_email = IncomingEmail.new(incoming_email_params.merge(sender: nil))
+    @incoming_email = IncomingEmail.new(incoming_email_params)
 
     if @incoming_email.save!
       ProcessIncomingEmailWorker.perform_async(@incoming_email.id)
-      redirect_to incoming_emails_path, notice: 'File sent and background processing started'
+      redirect_to incoming_emails_path, notice: 'File sent and background processing started, please wait'
     else
       render :new
     end

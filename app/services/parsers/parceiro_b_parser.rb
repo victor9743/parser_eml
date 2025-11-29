@@ -2,21 +2,20 @@
 module Parsers
   class ParceiroBParser < BaseParser
     def call
-      body = @mail.body.decoded
-      # logic of regex/templating to extract: name, email, phone, product_code, subject
-      name  = body[/Nome[:\s-]+(.+)/i, 1]&.strip
-      email = body[/E[-\s]?mail[:\s-]+(\S+)/i, 1]&.strip
-      phone = body[/Telefone[:\s-]+(.+)/i, 1]&.strip
+      body = @mail.body.decoded.scrub.force_encoding("UTF-8")
 
-      product_code =
-        body[
-          /
-            (?:produto(?:\s+de\s+c[óo]digo)?|c[óo]digo\s+do\s+produto)
-            [\s:>-]*
-            ([A-Z0-9-]+)
-          /ix,
-          1
-        ]&.strip
+      name  = body[/^Nome(?: do cliente)?:\s*(.*?)\r?$/i, 1]&.strip
+      email = body[/^E-mail:\s*(\S+)\r?$/i, 1]&.strip
+      phone = body[/^Telefone:\s*(.*?)\r?$/i, 1]&.strip
+
+      # --- Produto ---
+      # 1) search code
+      product_code = body[/^(?:Produto|Código|Produto de código):\s*(.*?)\r?$/i, 1]
+
+      # 2) if 1th not not found
+      product_code ||= body[/produto de código\s+(\w+)/i, 1]
+
+      product_code&.strip!
 
       subject = @mail.subject
 
@@ -24,7 +23,14 @@ module Parsers
         return Result.new(false, {}, "No Contact (email/phone) found")
       end
 
-      customer_attrs = { name: name, email: email, phone: phone, product_code: product_code, subject: subject }
+      customer_attrs = {
+        name: name,
+        email: email,
+        phone: phone.presence,
+        product_code: product_code,
+        subject: subject
+      }
+
       Result.new(true, customer_attrs, nil)
     rescue => e
       Result.new(false, {}, e.message)

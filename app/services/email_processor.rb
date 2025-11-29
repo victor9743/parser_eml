@@ -6,9 +6,11 @@ class EmailProcessor
   end
 
   def process
-    @incoming_email.update!(status: 'processing')
-    parser_class = Parsers::Registry.for_sender(sender_email)
-    raise "No parser for sender #{sender_email}" unless parser_class
+    @incoming_email.update!(status: 'processing', sender: Mail.read_from_string(load_raw_email.read).from&.first&.downcase)
+
+
+    parser_class = Parsers::Registry.for_sender(@incoming_email.sender)
+    raise "No parser for sender #{@incoming_email.sender}" unless parser_class
 
     parser = parser_class.new(@raw)
     result = parser.call
@@ -34,10 +36,5 @@ class EmailProcessor
   def load_raw_email
     # read attachment ActiveStorage
     StringIO.new(@incoming_email.file.download)
-  end
-
-  def sender_email
-    mail = Mail.read_from_string(load_raw_email.read)
-    mail.from&.first&.downcase
   end
 end

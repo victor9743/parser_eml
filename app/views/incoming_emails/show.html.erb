@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header">
-        incoming_email: <%= @incoming_email.id %> details
+        Incoming email details nº: <%= @incoming_email.id %>
     </div>
     <div class="card-body">
         <div class="d-flex justify-content-end mb-3">
@@ -16,21 +16,25 @@
         </div>
         <div class="card mb-3">
             <div class="card-header">
-                Email_processings details
+                Email processings details
             </div>
             <div class="card-body">
                 <% if @incoming_email.email_processings.size > 0 %>
                     <% @incoming_email.email_processings.each do |email_processing| %>
-                        <div class="mb-3">
-                            <%= email_processing.success %>
-                        </div>
-                        <div class="mb-3">
-                            <%= email_processing.error_message %>
-                        </div>
-                        <div class="mb-3">
-                            <pre>
-                                <%= email_processing.extracted_data %>
-                            </pre>
+                        <div class="card p-3">
+                            <div class="mb-3">
+                                Success? <%= email_processing.success %>
+                            </div>
+                            <% unless email_processing.success? %>
+                                <div class="mb-3">
+                                    <%= label_tag "Error message" %>
+                                    <%= text_area_tag :error_message, email_processing.error_message, cols: 80, rows: 10, class: "form-control", disabled: true %>
+                                </div>
+                            <% end %>
+                            <div class="mb-3">
+                                <%= label_tag "Extracted data" %>
+                                <%= text_area_tag :error_message, email_processing.extracted_data, cols: 80, rows: 10, class: "form-control", disabled: true %>
+                            </div>
                         </div>
                     <% end %>
                 <% else %>
