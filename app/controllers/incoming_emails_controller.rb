@@ -14,10 +14,11 @@ class IncomingEmailsController < ApplicationController
   def create
     @incoming_email = IncomingEmail.new(incoming_email_params)
 
-    if @incoming_email.save
+    if @incoming_email.save!
       ProcessIncomingEmailWorker.perform_async(@incoming_email.id)
       redirect_to incoming_emails_path, notice: 'File sent and background processing started, please wait'
     else
+      puts "ERRO FATAL (RSpec): Falha na criação de IncomingEmail: #{@incoming_email.errors.full_messages.join('; ')}"
       render :new
     end
   end
