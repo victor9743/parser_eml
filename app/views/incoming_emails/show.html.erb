@@ -1,20 +1,45 @@
-<h2>incoming_email details </h2>
-
-<%= @incoming_email.filename %>
-<br />
-<%= @incoming_email.status %>
-<br />
-<%= @incoming_email.sender %>
-
-
-<% @incoming_email.email_processings.each do |email_processing| %>
-    <div>
-        <%= email_processing.success %>
+<div class="card">
+    <div class="card-header">
+        incoming_email: <%= @incoming_email.id %> details
     </div>
-    <div>
-        <%= email_processing.error_message %>
+    <div class="card-body">
+        <div class="d-flex justify-content-end mb-3">
+            <span class="badge bg-<%= color_badge(@incoming_email.status) %>"><%= @incoming_email.status %></span>
+        </div>
+        <div class="mb-3">
+            <%= label_tag :filename, "Filename", class: "form-label" %>
+            <%= text_field_tag :filename, @incoming_email.filename, readonly: true, class: "form-control" %>
+        </div>
+        <div class="mb-3">
+            <%= label_tag :sender, "Sender", class: "form-label" %>
+            <%= text_field_tag :filename, @incoming_email.sender, readonly: true, class: "form-control" %>
+        </div>
+        <div class="card mb-3">
+            <div class="card-header">
+                Email_processings details
+            </div>
+            <div class="card-body">
+                <% if @incoming_email.email_processings.size > 0 %>
+                    <% @incoming_email.email_processings.each do |email_processing| %>
+                        <div class="mb-3">
+                            <%= email_processing.success %>
+                        </div>
+                        <div class="mb-3">
+                            <%= email_processing.error_message %>
+                        </div>
+                        <div class="mb-3">
+                            <pre>
+                                <%= email_processing.extracted_data %>
+                            </pre>
+                        </div>
+                    <% end %>
+                <% else %>
+                    No informations at moment
+                <% end %>
+            </div>
+        </div>
+        <div class="d-flex justify-content-end">
+            <%= link_to "Back", incoming_emails_path, class: "btn btn-secondary" %>
+        </div>
     </div>
-    <div>
-        <%= email_processing.extracted_data %>
-    </div>
-<% end %>
+</div>
