@@ -75,42 +75,34 @@ RSpec
 
 # UI e UX do Aplicativo
 
-O aplicativo foi desenvolvido seguindo princípios de simplicidade, clareza e navegação intuitiva, garantindo que qualquer usuário consiga interagir sem dificuldade.
+<p>O aplicativo foi desenvolvido seguindo princípios de simplicidade, clareza e navegação intuitiva, garantindo que qualquer usuário consiga interagir sem dificuldade.</p>
 
 * Funciona como o esperado
-
-Cada arquivo .eml enviado é processado automaticamente.
-
-O usuário visualiza rapidamente a situação de todos os processamentos no dashboard.
-
-Os detalhes de cada e-mail são exibidos de forma clara, com mensagens de sucesso ou erro.
-
+* Cada arquivo .eml enviado é processado automaticamente.
+* O usuário visualiza rapidamente a situação de todos os processamentos no dashboard.
+* Os detalhes de cada e-mail são exibidos de forma clara, com mensagens de sucesso ou erro.
 * Navegação Clara
-
-O menu e os botões seguem um padrão visual consistente.
-
-O botão New sempre leva ao formulário de upload.
-
-O botão details permite visualizar informações completas sobre o processamento.
-
-O botão Back está presente em todas as telas para facilitar retorno ao início.
-
+* O menu e os botões seguem um padrão visual consistente.
+* O botão New sempre leva ao formulário de upload.
+* O botão details permite visualizar informações completas sobre o processamento.
+* O botão Back está presente em todas as telas para facilitar retorno ao início.
 * Interface Intuitiva e Fácil de Usar
 
-Cards com cores destacam o status geral:
-
+* Cards com cores destacam o status geral:
+<br>
 Azul → total
-
+<br>
 Preto → pendentes
-
+<br>
 Amarelo → em processamento
-
+<br>
 Vermelho → falhas
-
+<br>
 Verde → sucessos
+<br>
 
-A tabela exibe informações essenciais: filename, status, created_at e opções.
+* A tabela exibe informações essenciais: filename, status, created_at e opções.
 
-Ícones e cores ajudam a identificar rapidamente o estado de cada e-mail.
+* Ícones e cores ajudam a identificar rapidamente o estado de cada e-mail.
 
-Campos de leitura (como sender e mensagens de erro) aparecem em caixas ampliadas, facilitando a leitura.
+* Campos de leitura (como sender e mensagens de erro) aparecem em caixas ampliadas, facilitando a leitura.
