@@ -5,7 +5,7 @@ RSpec.describe Parsers::FornecedorAParser do
     Mail.read(Rails.root.join("spec/fixtures/files/#{file}"))
   end
 
-  it "parses a valid email successfully" do
+  it "parses a valid email successfully to fornecedor a" do
     mail = load_email("fornecedor_a_ok.eml")
     parser = described_class.new(mail)
 
@@ -17,7 +17,7 @@ RSpec.describe Parsers::FornecedorAParser do
     expect(result.customer_attrs[:phone]).to eq("(11) 91234-5678")
   end
 
-  it "extracts product_code from phrase format" do
+  it "extracts product_code from phrase format to fornecedor a" do
     mail = load_email("fornecedor_a_ok.eml")
     parser = described_class.new(mail)
 
@@ -26,7 +26,7 @@ RSpec.describe Parsers::FornecedorAParser do
     expect(result.customer_attrs[:product_code]).to eq("ABC123")
   end
 
-  it "fails when there is no email and no phone" do
+  it "fails when there is no email and no phone to fornecedor a" do
     mail = load_email("fornecedor_a_missing_phone.eml")
     parser = described_class.new(mail)
 
