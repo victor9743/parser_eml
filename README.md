@@ -9,9 +9,9 @@ Git: Para clonar o repositório.<br>
 Docker: Incluindo o Docker Compose.
 
 * Clonagem do Repositório
-<br>
-Abra seu terminal e clone o código-fonte do projeto usando Git:
-
+<p>
+    Abra seu terminal e clone o código-fonte do projeto usando Git:
+</p>
 <pre>
     git clone https://github.com/victor9743/parser_eml.git
     cd parser_eml
@@ -19,8 +19,8 @@ Abra seu terminal e clone o código-fonte do projeto usando Git:
 
 * Configuração do Docker Compose
 <p>
-O arquivo docker-compose.yml define três serviços: web (Rails), db (PostgreSQL) e redis.
-Rode os comandos para criar a imagem Docker para o serviço web (Rails) e iniciar todos os serviços em segundo plano:
+    O arquivo docker-compose.yml define três serviços: web (Rails), db (PostgreSQL) e redis.
+    Rode os comandos para criar a imagem Docker para o serviço web (Rails) e iniciar todos os serviços em segundo plano:
 </p>
 <pre>
     docker compose build
@@ -28,27 +28,28 @@ Rode os comandos para criar a imagem Docker para o serviço web (Rails) e inicia
 </pre>
 
 * Configuração do Banco de Dados
-Execute estes comandos no terminal, direcionando-os para o container web:
-
+<p>
+    Execute estes comandos no terminal, direcionando-os para o container web:
+</p>
 # Cria o banco de dados
 
 <pre>
-docker compose exec web bundle exec rails db:create
+d   ocker compose exec web bundle exec rails db:create
 </pre>
 
 # Executa as migrações (cria as tabelas)
 <pre>
-docker compose exec web bundle exec rails db:migrate
+    docker compose exec web bundle exec rails db:migrate
 </pre>
 
 * Execução e Uso
-A aplicação Rails está disponível no navegador:
+<p>A aplicação Rails está disponível no navegador:</p>
 <pre>
-URL: http://localhost:3000
+    URL: http://localhost:3000
 </pre>
 
 * Execução de Testes (RSpec)
-Para rodar todos os testes e confirmar que o ambiente está configurado corretamente (incluindo a integração com o Sidekiq/Redis no modo de teste):
+<p>Para rodar todos os testes e confirmar que o ambiente está configurado corretamente (incluindo a integração com o Sidekiq/Redis no modo de teste):</p>
 <pre>
-docker compose exec web bundle exec rspec
+    docker compose exec web bundle exec rspec
 </pre>
