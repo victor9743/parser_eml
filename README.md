@@ -61,5 +61,56 @@ Docker: Incluindo o Docker Compose.
 <p> Cada solicitação feita, será visualizada na rota raiz do projeto. Para visualizar os resultados, clique na opção details. Nesta opção, terá
 todos as informações da solicitação, inclusive os logs.Se houver algum falha na solicitação, será mostrado o retorno do erro.</p>
 
+# Tecnologias Utilizadas
 
- 
+Ruby on Rails
+
+PostgreSQL
+
+Redis
+
+Docker
+
+RSpec
+
+# UI e UX do Aplicativo
+
+O aplicativo foi desenvolvido seguindo princípios de simplicidade, clareza e navegação intuitiva, garantindo que qualquer usuário consiga interagir sem dificuldade.
+
+* Funciona como o esperado
+
+Cada arquivo .eml enviado é processado automaticamente.
+
+O usuário visualiza rapidamente a situação de todos os processamentos no dashboard.
+
+Os detalhes de cada e-mail são exibidos de forma clara, com mensagens de sucesso ou erro.
+
+* Navegação Clara
+
+O menu e os botões seguem um padrão visual consistente.
+
+O botão New sempre leva ao formulário de upload.
+
+O botão details permite visualizar informações completas sobre o processamento.
+
+O botão Back está presente em todas as telas para facilitar retorno ao início.
+
+* Interface Intuitiva e Fácil de Usar
+
+Cards com cores destacam o status geral:
+
+Azul → total
+
+Preto → pendentes
+
+Amarelo → em processamento
+
+Vermelho → falhas
+
+Verde → sucessos
+
+A tabela exibe informações essenciais: filename, status, created_at e opções.
+
+Ícones e cores ajudam a identificar rapidamente o estado de cada e-mail.
+
+Campos de leitura (como sender e mensagens de erro) aparecem em caixas ampliadas, facilitando a leitura.
