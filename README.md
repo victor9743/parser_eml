@@ -18,10 +18,10 @@ Abra seu terminal e clone o código-fonte do projeto usando Git:
 </pre>
 
 * Configuração do Docker Compose
-<br>
+<p>
 O arquivo docker-compose.yml define três serviços: web (Rails), db (PostgreSQL) e redis.
 Rode os comandos para criar a imagem Docker para o serviço web (Rails) e iniciar todos os serviços em segundo plano:
-
+</p>
 <pre>
     docker compose build
     docker compose up -d
