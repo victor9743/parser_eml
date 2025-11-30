@@ -1,12 +1,12 @@
 
 
-Guia de Instalação e Execução do Projeto
+<h2>Guia de Instalação e Execução do Projeto</h2>
 
 Pré-requisitos Essenciais
 Antes de começar, certifique-se de que sua máquina tenha os seguintes softwares instalados:
 
-Git: Para clonar o repositório.
-Docker: Incluindo o Docker Compose.
+*Git: Para clonar o repositório.
+*Docker: Incluindo o Docker Compose.
 
 Instalação
 
