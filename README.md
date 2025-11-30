@@ -106,7 +106,7 @@ Verde == sucessos,
 
 * Tela Inicial
 <div style="border: 1px solid black">
-    ![Tela Inicial](docs/index_image.png)
+![Tela Inicial](docs/index_image.png)
 </div>
 
 * Formulário de Entrada
