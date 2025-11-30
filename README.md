@@ -89,11 +89,11 @@ RSpec
 * Interface Intuitiva e Fácil de Usar
 
 * Cards com cores destacam o status geral:
-Azul → total,
-Preto → pendentes,
-Amarelo → em processamento,
-Vermelho → falhas,
-Verde → sucessos,
+Azul == total,
+Preto == pendentes,
+Amarelo == em processamento,
+Vermelho == falhas,
+Verde == sucessos,
 </p>
 
 * A tabela exibe informações essenciais: filename, status, created_at e opções.
