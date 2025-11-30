@@ -101,3 +101,18 @@ Verde == sucessos,
 * Ícones e cores ajudam a identificar rapidamente o estado de cada e-mail.
 
 * Campos de leitura (como sender e mensagens de erro) aparecem em caixas ampliadas, facilitando a leitura.
+
+# Abaixo é possível visualizar como a interface se comporta na prática:
+
+* Tela Inicial
+![Tela Inicial](docs/index_image.png)
+
+* Formulário de Entrada
+![Formulário](docs/new_image.png)
+
+* Requisição bem sucedida
+![Resultado](docs/success_image.png)
+
+
+* Requisição mal sucedida
+![Resultado](docs/failure_image.png)
