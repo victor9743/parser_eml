@@ -34,7 +34,7 @@ Docker: Incluindo o Docker Compose.
 # Cria o banco de dados
 
 <pre>
-d   ocker compose exec web bundle exec rails db:create
+    docker compose exec web bundle exec rails db:create
 </pre>
 
 # Executa as migrações (cria as tabelas)
