@@ -14,8 +14,8 @@ class EmailProcessor
   end
 
   def process
-    @incoming_email.update!(status: 'processing', sender: Mail.read_from_string(load_raw_email.read).from&.first&.downcase)
-
+    @incoming_email.update!(status: 'processing',
+                            sender: Mail.read_from_string(load_raw_email.read).from&.first&.downcase)
 
     parser_class = Parsers::Registry.for_sender(@incoming_email.sender)
     raise "No parser for sender #{@incoming_email.sender}" unless parser_class
@@ -25,15 +25,16 @@ class EmailProcessor
 
     if result.success?
       ActiveRecord::Base.transaction do
-        customer = Customer.create!(result.customer_attrs)
+        Customer.create!(result.customer_attrs)
         @incoming_email.email_processings.create!(success: true, extracted_data: result.to_h)
         @incoming_email.update!(status: 'success')
       end
     else
-      @incoming_email.email_processings.create!(success: false, error_message: result.error_message, extracted_data: result.to_h)
+      @incoming_email.email_processings.create!(success: false, error_message: result.error_message,
+                                                extracted_data: result.to_h)
       @incoming_email.update!(status: 'failed')
     end
-  rescue => e
+  rescue StandardError => e
     @incoming_email.email_processings.create!(success: false, error_message: e.message)
     @incoming_email.update!(status: 'failed')
     raise

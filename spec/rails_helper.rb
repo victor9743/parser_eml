@@ -4,7 +4,7 @@ require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 # Prevent database truncation if the environment is production
-abort("The Rails environment is running in production mode!") if Rails.env.production?
+abort('The Rails environment is running in production mode!') if Rails.env.production?
 # Uncomment the line below in case you have `--require rails_helper` in the `.rspec` file
 # that will avoid rails generators crashing because migrations haven't been run yet
 # return unless Rails.env.test?
@@ -40,10 +40,10 @@ RSpec.configure do |config|
     Rails.root.join('spec/fixtures')
   ]
 
-  config.before(:each) do
+  config.before do
     Sidekiq::Testing.fake!
   end
-  
+
   config.include Rails.application.routes.url_helpers
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
@@ -74,4 +74,9 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+end
+
+def load_email(filename)
+  file_path = Rails.root.join('spec', 'fixtures', 'files', filename)
+  File.open(file_path)
 end

@@ -29,3 +29,6 @@
 
 en:
   hello: "Hello world"
+  incoming_emails:
+    file_sent: "File sent and background processing started, please wait"
+    file_required: "File is required."

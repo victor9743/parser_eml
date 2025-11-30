@@ -1,11 +1,15 @@
+# Controller for managing incoming emails
 class IncomingEmailsController < ApplicationController
   rescue_from ActionController::ParameterMissing, with: :missing_file
-  skip_before_action :verify_authenticity_token, only: [:create], if: -> { Rails.env.test? }
+  skip_before_action :verify_authenticity_token, only: [:create]
 
   def index
     @incoming_emails = IncomingEmail.order(created_at: :desc).page(params[:page]).per(10)
   end
 
+  def show
+    @incoming_email = IncomingEmail.find(params[:id])
+  end
 
   def new
     @incoming_email = IncomingEmail.new
@@ -16,23 +20,20 @@ class IncomingEmailsController < ApplicationController
 
     if @incoming_email.save
       ProcessIncomingEmailWorker.perform_async(@incoming_email.id)
-      redirect_to incoming_emails_path, notice: 'File sent and background processing started, please wait'
+      redirect_to incoming_emails_path, notice: t('.file_sent')
     else
       render :new
     end
   end
 
-  def show
-    @incoming_email = IncomingEmail.find(params[:id])
-  end
-
   private
+
   def incoming_email_params
     params.require(:incoming_email).permit(:file)
   end
 
   def missing_file
-    flash[:alert] = "File is required."
-    redirect_back fallback_location: incoming_emails_path
+    flash[:alert] = t('.file_required')
+    redirect_back_or_to(incoming_emails_path)
   end
 end

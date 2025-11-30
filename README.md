@@ -60,3 +60,6 @@ Docker: Incluindo o Docker Compose.
 # Como visualizar os resultados (customers + logs).
 <p> Cada solicitação feita, será visualizada na rota raiz do projeto. Para visualizar os resultados, clique na opção details. Nesta opção, terá
 todos as informações da solicitação, inclusive os logs.Se houver algum falha na solicitação, será mostrado o retorno do erro.</p>
+
+
+ 

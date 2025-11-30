@@ -1,4 +1,5 @@
 module Parsers
+  # Registry for email parsers based on sender email address
   class Registry
     @mapping = {
       'loja@fornecedora.com' => Parsers::FornecedorAParser,

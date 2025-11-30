@@ -1,38 +1,34 @@
+# helper used in code.
 module ApplicationHelper
-    def count_incoming_emails(status)
-        if status == "all"
-            IncomingEmail.count
-        elsif status == "pending"
-            IncomingEmail.where(status: "pending").count
-        elsif status == "processing"
-            IncomingEmail.where(status: "processing").count
-        elsif status == "failed"
-            IncomingEmail.where(status: "failed").count
-        elsif status == "success"
-            IncomingEmail.where(status: "success").count
-        end
-    end
+  # Counts incoming emails based on their status.
+  def count_incoming_emails(status)
+    {
+      'all' => IncomingEmail.count,
+      'pending' => IncomingEmail.where(status: 'pending').count,
+      'processing' => IncomingEmail.where(status: 'processing').count,
+      'failed' => IncomingEmail.where(status: 'failed').count,
+      'success' => IncomingEmail.where(status: 'success').count
+    }.fetch(status, 0)
+  end
 
-    def color_badge(status)
-        if status == "pending"
-            "black"
-        elsif status == "processing"
-            "warning"
-        elsif status == "failed"
-            "danger"
-        elsif status == "success"
-            "success"
-        end
-    end
+  # Returns the color badge for a given status.
+  def color_badge(status)
+    {
+      'pending' => 'black',
+      'processing' => 'warning',
+      'failed' => 'danger',
+      'success' => 'success'
+    }.fetch(status, 'secondary')
+  end
 
-    def bootstrap_class_for(type)
-        type = type.to_s
+  def bootstrap_class_for(type)
+    type = type.to_s
 
-        return 'success' if ['success', 'notice'].include?(type)
-        return 'danger'  if ['error', 'alert', 'danger'].include?(type)
-        return 'warning' if type == 'warning'
-        return 'info'    if type == 'info'
+    return 'success' if %w[success notice].include?(type)
+    return 'danger'  if %w[error alert danger].include?(type)
+    return 'warning' if type == 'warning'
+    return 'info'    if type == 'info'
 
-        'secondary'
-    end
+    'secondary'
+  end
 end
