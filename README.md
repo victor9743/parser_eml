@@ -105,7 +105,9 @@ Verde == sucessos,
 # Abaixo é possível visualizar como a interface se comporta na prática:
 
 * Tela Inicial
-![Tela Inicial](docs/index_image.png)
+<div style="border: 1px solid black">
+    ![Tela Inicial](docs/index_image.png)
+</div>
 
 * Formulário de Entrada
 ![Formulário](docs/new_image.png)
