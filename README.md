@@ -1,6 +1,6 @@
 
 
-<h2>Guia de Instalação e Execução do Projeto</h2>
+# Guia de Instalação e Execução do Projeto
 
 Pré-requisitos Essenciais
 Antes de começar, certifique-se de que sua máquina tenha os seguintes softwares instalados:
@@ -9,6 +9,7 @@ Git: Para clonar o repositório.<br>
 Docker: Incluindo o Docker Compose.
 
 * Clonagem do Repositório
+<br>
 Abra seu terminal e clone o código-fonte do projeto usando Git:
 
 <pre>
@@ -17,6 +18,7 @@ Abra seu terminal e clone o código-fonte do projeto usando Git:
 </pre>
 
 * Configuração do Docker Compose
+<br>
 O arquivo docker-compose.yml define três serviços: web (Rails), db (PostgreSQL) e redis.
 Rode os comandos para criar a imagem Docker para o serviço web (Rails) e iniciar todos os serviços em segundo plano:
 
