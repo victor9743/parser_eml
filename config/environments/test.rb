@@ -65,5 +65,3 @@ Rails.application.configure do
   config.hosts.clear
   config.middleware.delete ActionDispatch::HostAuthorization
 end
-
-Byebug.hook = proc {}
