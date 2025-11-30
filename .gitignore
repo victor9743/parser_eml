@@ -36,4 +36,3 @@
 .byebug_history
 node_modules/
 yarn.lock
-vendor/javascript
