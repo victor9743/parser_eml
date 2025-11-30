@@ -2,6 +2,7 @@ services:
   web:
     build: .
     environment:
+      DB_HOST: db
       SECRET_KEY_BASE: "9bc4f9e3928175f89f950dedf5f37b1e9c021a553881e36f10fcb0afdf"
       RAILS_ENV: development
       DATABASE_URL: postgresql://postgres:123456@db:5432/parser_db

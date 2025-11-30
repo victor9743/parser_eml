@@ -53,3 +53,10 @@ Docker: Incluindo o Docker Compose.
 <pre>
     docker compose exec web bundle exec rspec
 </pre>
+
+# Como enviar um e-mail .eml para processamento.
+<p> em seu ambiente vá para: <pre>incoming_emails/new</pre>. Após isso, adicione o arquivo .eml no campo .eml file e depois disso, clique em send. Ao realizar este procedimento, você será redirecionado para a rota rails do projeto.</p>
+
+# Como visualizar os resultados (customers + logs).
+<p> Cada solicitação feita, será visualizada na rota raiz do projeto. Para visualizar os resultados, clique na opção details. Nesta opção, terá
+todos as informações da solicitação, inclusive os logs.Se houver algum falha na solicitação, será mostrado o retorno do erro.</p>

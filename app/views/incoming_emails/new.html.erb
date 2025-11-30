@@ -8,7 +8,7 @@
     <%= form_with model: @incoming_email, local: true, html: { multipart: true } do |form| %>
 
       <div class="mb-3">
-        <%= form.label :file, "Select form .eml", class: "form-label" %>
+        <%= form.label :file, ".eml File", class: "form-label" %>
         <%= form.file_field :file, accept: ".eml", class: "form-control" %>
       </div>
 
