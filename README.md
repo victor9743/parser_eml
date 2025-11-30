@@ -105,16 +105,14 @@ Verde == sucessos,
 # Abaixo é possível visualizar como a interface se comporta na prática:
 
 * Tela Inicial
-<div style="border: 1px solid black">
 ![Tela Inicial](docs/index_image.png)
-</div>
 
 * Formulário de Entrada
 ![Formulário](docs/new_image.png)
 
 * Requisição bem sucedida
-![Resultado](docs/success_image.png)
+![Sucesso](docs/success_image.png)
 
 
 * Requisição mal sucedida
-![Resultado](docs/failure_image.png)
+![Falha](docs/failure_image.png)
