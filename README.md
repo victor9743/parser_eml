@@ -117,5 +117,5 @@ Verde == sucessos,
 * Requisição mal sucedida
 ![Falha](docs/failure_image.png)
 
-# Vídeo Demonstrativo ( clicar em baixar para visualizar)
+# Vídeo Demonstrativo (ao entrar no link, clique em baixar para visualizar)
 <a href="https://github.com/victor9743/parser_eml/tree/main/docs/video.mp4" >Vídeo</a>
