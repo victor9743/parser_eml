@@ -1,7 +1,6 @@
 # Controller for managing incoming emails
 class IncomingEmailsController < ApplicationController
   rescue_from ActionController::ParameterMissing, with: :missing_file
-  skip_before_action :verify_authenticity_token, only: [:create]
 
   def index
     @incoming_emails = IncomingEmail.order(created_at: :desc).page(params[:page]).per(10)

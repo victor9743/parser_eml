@@ -21,6 +21,7 @@ module ApplicationHelper
     }.fetch(status, 'secondary')
   end
 
+  # Returns the color alert for a given status.
   def bootstrap_class_for(type)
     type = type.to_s
 
