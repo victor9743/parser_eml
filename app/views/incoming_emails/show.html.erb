@@ -14,6 +14,35 @@
             <%= label_tag :sender, "Sender", class: "form-label" %>
             <%= text_field_tag :filename, @incoming_email.sender, readonly: true, class: "form-control" %>
         </div>
+        <% unless @incoming_email.customer.nil? %>
+            <div class="card mb-3">
+                <div class="card-header">
+                    Customer details
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <%= label_tag :name, "Subject", class: "form-label" %>
+                        <%= text_field_tag :name, @incoming_email.customer.subject, readonly: true, class: "form-control" %>
+                    </div>
+                    <div class="mb-3">
+                        <%= label_tag :name, "Name", class: "form-label" %>
+                        <%= text_field_tag :name, @incoming_email.customer.name, readonly: true, class: "form-control" %>
+                    </div>
+                    <div class="mb-3">
+                        <%= label_tag :email, "Email", class: "form-label" %>
+                        <%= text_field_tag :email, @incoming_email.customer.email, readonly: true, class: "form-control" %>
+                    </div>
+                    <div class="mb-3">
+                        <%= label_tag :phone, "Phone", class: "form-label" %>
+                        <%= text_field_tag :phone, @incoming_email.customer.phone, readonly: true, class: "form-control" %>
+                    </div>
+                    <div class="mb-3">
+                        <%= label_tag :name, "Product Code", class: "form-label" %>
+                        <%= text_field_tag :name, @incoming_email.customer.product_code, readonly: true, class: "form-control" %>
+                    </div>
+                </div>
+            </div>
+        <% end %>
         <div class="card mb-3">
             <div class="card-header">
                 Email processings details

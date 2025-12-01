@@ -25,7 +25,9 @@ class EmailProcessor
 
     if result.success?
       ActiveRecord::Base.transaction do
-        Customer.create!(result.customer_attrs)
+        customer = Customer.new(result.customer_attrs)
+        customer.incoming_email = @incoming_email
+        customer.save!
         @incoming_email.email_processings.create!(success: true, extracted_data: result.to_h)
         @incoming_email.update!(status: 'success')
       end

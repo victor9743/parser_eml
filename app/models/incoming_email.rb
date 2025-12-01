@@ -1,6 +1,7 @@
 # app/models/incoming_email.rb
 class IncomingEmail < ApplicationRecord
   has_many :email_processings, dependent: :destroy
+  has_one :customer
   has_one_attached :file
 
   validates :file, presence: true
