@@ -118,6 +118,4 @@ Verde == sucessos,
 ![Falha](docs/failure_image.png)
 
 # Vídeo Demonstrativo ( clicar em baixar para visualizar)
-<video src="https://github.com/victor9743/parser_eml/tree/main/docs/video.mp4" 
-       width="600" controls>
-</video>
+<a href="https://github.com/victor9743/parser_eml/tree/main/docs/video.mp4" >Vídeo</a>
